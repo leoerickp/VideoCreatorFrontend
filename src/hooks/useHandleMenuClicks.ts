@@ -1,11 +1,10 @@
 import { MenuProps } from "antd";
-import { useState } from 'react';
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useAppContext } from "../contexts/appcontext/AppContext";
 
 export const useHandleMenuClicks = () => {
+    const { current, setCurrent } = useAppContext()
     const navigate = useNavigate();
-    const [current, setCurrent] = useState("home");
-
 
     const onClick: MenuProps["onClick"] = (e: any) => {
         if (e.key !== "leoerickp") {
@@ -20,6 +19,7 @@ export const useHandleMenuClicks = () => {
     return {
         current,
         onClick,
-        setCurrent
+        navigate,
+        setCurrent,
     }
 }

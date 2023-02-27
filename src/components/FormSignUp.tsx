@@ -11,13 +11,7 @@ export const FormSignUp = () => {
 
   return (
     <Spin spinning={connecting} delay={500}>
-      <Form
-        layout="horizontal"
-        form={form}
-        initialValues={{ layout: "vertical" }}
-        style={{ maxWidth: 350 }}
-        onFinish={signUpSubmit}
-      >
+      <Form layout="horizontal" form={form} onFinish={signUpSubmit}>
         <InputFullName />
         <InputEmail />
         <InputPassword />

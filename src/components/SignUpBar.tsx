@@ -8,7 +8,7 @@ export const SignUpBar = () => {
       direction="horizontal"
       style={{ width: "100%", justifyContent: "space-between" }}
     >
-      <a href="#!">Forgot your password</a>
+      <p style={{ margin: 0 }}>Register now...</p>
       <Link to="/signup">Sign up</Link>
     </Space>
   );

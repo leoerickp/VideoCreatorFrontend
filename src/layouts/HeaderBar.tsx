@@ -3,11 +3,8 @@ import { Header } from "antd/es/layout/layout";
 import { Logo } from "../components/Logo";
 import { MainMenu } from "../components/MainMenu";
 import { UserMenu } from "../components/UserMenu";
-import { useHandleMenuClicks } from "../hooks/useHandleMenuClicks";
 
 export const HeaderBar = () => {
-  const { current, onClick } = useHandleMenuClicks();
-
   return (
     <Header>
       <Row>
@@ -15,10 +12,10 @@ export const HeaderBar = () => {
           <Logo />
         </Col>
         <Col span={12}>
-          <MainMenu onClick={onClick} current={current} />
+          <MainMenu />
         </Col>
         <Col span={6}>
-          <UserMenu onClick={onClick} current={current} />
+          <UserMenu />
         </Col>
       </Row>
     </Header>

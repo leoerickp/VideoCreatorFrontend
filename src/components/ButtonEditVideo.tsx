@@ -1,12 +1,13 @@
 import { EditOutlined } from "@ant-design/icons";
 import { Button, Tooltip } from "antd";
-import { useNavigate } from "react-router-dom";
 import { HOME } from "../config/config";
+import { useHandleMenuClicks } from "../hooks/useHandleMenuClicks";
 
 export const ButtonEditVideo = ({ item }: any) => {
-  const navigate = useNavigate();
+  const { setCurrent, navigate } = useHandleMenuClicks();
   const editVideo = () => {
     navigate(`${HOME}/edit`, { state: { item } });
+    setCurrent("edit");
   };
   return (
     <Tooltip title="Edit video" color={"purple"}>

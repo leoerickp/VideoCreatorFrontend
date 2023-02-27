@@ -4,12 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { config, vidoCreatorApiServer } from "../api/video-creator-apiserver";
 import { registerAuth, removeAuth } from "../store/slices/auth/authSlice";
 import { useApiHandleNotification } from "./useApiHandleNotification";
-import { HOME } from '../config/config';
+import { HOME, initialPath } from '../config/config';
+import { useHandleMenuClicks } from "./useHandleMenuClicks";
 
 export const useHandleAuthActions = (mainPath: string = HOME) => {
-
+    const { setCurrent, navigate } = useHandleMenuClicks();
     const { ApiErrorNotification } = useApiHandleNotification();
-    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const [connecting, setConnecting] = useState(false);
@@ -22,13 +22,14 @@ export const useHandleAuthActions = (mainPath: string = HOME) => {
         const { email, password } = values;
         setConnecting(true);
         try {
-            const resp = await vidoCreatorApiServer
+            const { data } = await vidoCreatorApiServer
                 .post(`/auth/login`, {
                     email,
                     password,
                 });
-            dispatch(registerAuth(resp.data));
+            dispatch(registerAuth(data));
             navigate(mainPath);
+            setCurrent(initialPath);
         } catch (error) {
             ApiErrorNotification(error);
             dispatch(removeAuth());
@@ -40,14 +41,15 @@ export const useHandleAuthActions = (mainPath: string = HOME) => {
         const { email, password, fullName } = values;
         setConnecting(true);
         try {
-            const resp = await vidoCreatorApiServer
+            const { data } = await vidoCreatorApiServer
                 .post(`/auth/sign-up`, {
                     email,
                     password,
                     fullName,
                 });
-            dispatch(registerAuth(resp.data));
+            dispatch(registerAuth(data));
             navigate(mainPath);
+            setCurrent(initialPath);
         } catch (error) {
             ApiErrorNotification(error);
             dispatch(removeAuth());

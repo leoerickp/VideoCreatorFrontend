@@ -1,4 +1,5 @@
 import { notification } from "antd";
+import { useState } from "react";
 import { AppContext } from "./AppContext";
 
 export const AppProvider = ({ children }: any) => {
@@ -14,13 +15,16 @@ export const AppProvider = ({ children }: any) => {
       placement: "topRight",
     });
   };
+  const [current, setCurrent] = useState("home");
 
   return (
     <AppContext.Provider
       value={{
         api,
         contextHolder,
+        current,
         errorNotification,
+        setCurrent,
       }}
     >
       {contextHolder}

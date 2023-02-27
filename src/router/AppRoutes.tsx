@@ -7,6 +7,7 @@ import { VideoCreatorRoutes } from "./VideoCreatorRoutes";
 
 export const AppRoutes = () => {
   const { isLogged } = useSelector((state: any) => state.auth);
+
   return (
     <Routes>
       <Route

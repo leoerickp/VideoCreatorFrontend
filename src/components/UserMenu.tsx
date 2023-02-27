@@ -1,7 +1,9 @@
 import { Menu } from "antd";
 import { userItems } from "../constants/user-menu-items";
+import { useHandleMenuClicks } from "../hooks/useHandleMenuClicks";
 
-export const UserMenu = ({ onClick, current }: any) => {
+export const UserMenu = () => {
+  const { current, onClick } = useHandleMenuClicks();
   return (
     <Menu
       theme={"dark"}

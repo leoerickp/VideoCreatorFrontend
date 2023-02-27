@@ -1,14 +1,11 @@
 import { message } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { config, vidoCreatorApiServer } from "../api/video-creator-apiserver";
 import { registerAuth } from "../store/slices/auth/authSlice";
-import { HOME } from "../config/config";
 
 export const useHandleUserActions = () => {
   const { userData } = useSelector((state: any) => state.auth);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const updateUser = async (id: number, values: any) => {
     try {
       const { data } = await vidoCreatorApiServer.put(

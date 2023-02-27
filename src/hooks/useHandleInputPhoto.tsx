@@ -5,7 +5,7 @@ export const useHandleInputPhoto = () => {
   const [autoCompleteResult, setAutoCompleteResult] = useState<string[]>([]);
   const form = Form.useFormInstance();
 
-  const [image, setImage] = useState(form.getFieldValue("urlPhoto"));
+  const [image, setImage] = useState(form.getFieldValue("urlPhoto") || "");
   const onWebsiteChange = (value: string) => {
     if (!value) {
       setAutoCompleteResult([]);
