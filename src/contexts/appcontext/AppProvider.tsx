@@ -15,16 +15,16 @@ export const AppProvider = ({ children }: any) => {
       placement: "topRight",
     });
   };
-  const [current, setCurrent] = useState("home");
+  const [currentMenuOption, setCurrentMenuOption] = useState("/");
 
   return (
     <AppContext.Provider
       value={{
         api,
         contextHolder,
-        current,
+        currentMenuOption,
         errorNotification,
-        setCurrent,
+        setCurrentMenuOption,
       }}
     >
       {contextHolder}

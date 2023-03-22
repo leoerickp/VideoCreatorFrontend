@@ -4,10 +4,10 @@ import { HOME } from "../config/config";
 import { useHandleMenuClicks } from "../hooks/useHandleMenuClicks";
 
 export const ButtonEditVideo = ({ item }: any) => {
-  const { setCurrent, navigate } = useHandleMenuClicks();
+  const { setCurrentMenuOption, navigate } = useHandleMenuClicks();
   const editVideo = () => {
     navigate(`${HOME}/edit`, { state: { item } });
-    setCurrent("edit");
+    setCurrentMenuOption("edit");
   };
   return (
     <Tooltip title="Edit video" color={"purple"}>

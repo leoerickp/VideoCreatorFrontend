@@ -1,6 +1,6 @@
 import { Layout } from "antd";
 import { Content } from "antd/es/layout/layout";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { FooterBar } from "../layouts/FooterBar";
 import { HeaderBar } from "../layouts/HeaderBar";
 import { Home } from "../pages/Home";
@@ -10,6 +10,7 @@ import { Profile } from "../pages/Profile";
 import { CreateVideo } from "../pages/CreateVideo";
 import { Error404 } from "../pages/Error404";
 import { EditVideo } from "../pages/EditVideo";
+import { Logout } from "../pages/Logout";
 export const VideoCreatorRoutes = () => {
   return (
     <Layout style={{ height: "100vh" }}>
@@ -23,6 +24,7 @@ export const VideoCreatorRoutes = () => {
           }}
         >
           <Routes>
+            <Route path="/auth/*" element={<Navigate to="/" />} />
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path="/favorites" element={<MyFavorites />} />
@@ -30,6 +32,7 @@ export const VideoCreatorRoutes = () => {
             <Route path="/profile" element={<Profile />} />
             <Route path="/create" element={<CreateVideo />} />
             <Route path="/edit" element={<EditVideo />} />
+            <Route path="/logout" element={<Logout />} />
             <Route path="/*" element={<Error404 />} />
           </Routes>
         </Content>

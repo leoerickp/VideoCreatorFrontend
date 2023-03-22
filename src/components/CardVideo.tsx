@@ -10,7 +10,13 @@ export const CardVideo = ({ item }: any) => {
   return (
     <Card
       hoverable
-      cover={<iframe src={item.link} allowFullScreen frameBorder="0"></iframe>}
+      cover={
+        <iframe
+          src={item.link}
+          allowFullScreen
+          style={{ border: 0, borderRadius: "15px 0px" }}
+        ></iframe>
+      }
       style={
         action === ValidGetVideoActions.own
           ? { height: "270px" }

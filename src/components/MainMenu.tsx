@@ -3,12 +3,12 @@ import { mainItems } from "../constants/menu-items";
 import { useHandleMenuClicks } from "../hooks/useHandleMenuClicks";
 
 export const MainMenu = () => {
-  const { current, onClick } = useHandleMenuClicks();
+  const { currentMenuOption, onClick } = useHandleMenuClicks();
   return (
     <Menu
       theme={"dark"}
       onClick={onClick}
-      selectedKeys={[current]}
+      selectedKeys={[currentMenuOption]}
       mode="horizontal"
       items={mainItems}
     />

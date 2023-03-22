@@ -9,7 +9,7 @@ export const SignUpBar = () => {
       style={{ width: "100%", justifyContent: "space-between" }}
     >
       <p style={{ margin: 0 }}>Register now...</p>
-      <Link to="/signup">Sign up</Link>
+      <Link to="/auth/signup">Sign up</Link>
     </Space>
   );
 };

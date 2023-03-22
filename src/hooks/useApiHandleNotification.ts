@@ -2,10 +2,10 @@ import { useAppContext } from "../contexts/appcontext/AppContext";
 
 export const useApiHandleNotification = () => {
     const { errorNotification } = useAppContext();
-    const ApiErrorNotification = (error: any) => {
+    const ApiErrorNotification = ({ statusText, statuscode, message }: any) => {
         errorNotification(
-            `Login error: ${error.response.statusText}`,
-            `Statuscode: ${error.response.data.statuscode} - message: ${error.response.data.message}`
+            `Login error: ${statusText}`,
+            `Statuscode: ${statuscode} - message: ${message}`
         );
     }
     return { ApiErrorNotification }

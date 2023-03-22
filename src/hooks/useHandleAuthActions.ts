@@ -1,61 +1,32 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { config, vidoCreatorApiServer } from "../api/video-creator-apiserver";
-import { registerAuth, removeAuth } from "../store/slices/auth/authSlice";
+import { eraseErrorMessage } from "../store/slices/auth/authSlice";
 import { useApiHandleNotification } from "./useApiHandleNotification";
-import { HOME, initialPath } from '../config/config';
-import { useHandleMenuClicks } from "./useHandleMenuClicks";
+import { login, signUp } from "../store/slices/auth/thunks";
 
-export const useHandleAuthActions = (mainPath: string = HOME) => {
-    const { setCurrent, navigate } = useHandleMenuClicks();
+export const useHandleAuthActions = () => {
     const { ApiErrorNotification } = useApiHandleNotification();
+    const { isConnecting, errorMessage } = useSelector((state: any) => state.auth);
     const dispatch = useDispatch();
 
-    const [connecting, setConnecting] = useState(false);
-
     useEffect(() => {
-        dispatch(removeAuth());
-    }, [connecting]);
+        if (errorMessage) {
+            ApiErrorNotification(errorMessage);
+            dispatch(eraseErrorMessage())
+        }
+    }, [errorMessage]);
+
 
     const authLoginSubmit = async (values: any) => {
         const { email, password } = values;
-        setConnecting(true);
-        try {
-            const { data } = await vidoCreatorApiServer
-                .post(`/auth/login`, {
-                    email,
-                    password,
-                });
-            dispatch(registerAuth(data));
-            navigate(mainPath);
-            setCurrent(initialPath);
-        } catch (error) {
-            ApiErrorNotification(error);
-            dispatch(removeAuth());
-        }
-        setConnecting(false);
+        dispatch(login({ email, password }));
+
     };
 
     const signUpSubmit = async (values: any) => {
         const { email, password, fullName } = values;
-        setConnecting(true);
-        try {
-            const { data } = await vidoCreatorApiServer
-                .post(`/auth/sign-up`, {
-                    email,
-                    password,
-                    fullName,
-                });
-            dispatch(registerAuth(data));
-            navigate(mainPath);
-            setCurrent(initialPath);
-        } catch (error) {
-            ApiErrorNotification(error);
-            dispatch(removeAuth());
-        }
-        setConnecting(false);
+        dispatch(signUp({ email, password, fullName }));
     };
 
-    return { authLoginSubmit, connecting, signUpSubmit }
+    return { authLoginSubmit, isConnecting, signUpSubmit }
 }

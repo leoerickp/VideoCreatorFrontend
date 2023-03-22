@@ -9,7 +9,7 @@ export const SignUpLogin = () => {
       align="end"
       style={{ width: "100%", justifyContent: "space-between" }}
     >
-      <Link to="/login">
+      <Link to="/auth/login">
         <SwapLeftOutlined /> Login
       </Link>
       <Button type="primary" icon={<UserAddOutlined />} htmlType="submit">

@@ -6,11 +6,11 @@ import { InputPassword } from "./InputPassword";
 import { SignUpBar } from "./SignUpBar";
 
 export const FormLogin = () => {
-  const { connecting, authLoginSubmit } = useHandleAuthActions();
+  const { isConnecting, authLoginSubmit } = useHandleAuthActions();
   const [form] = Form.useForm();
 
   return (
-    <Spin spinning={connecting} delay={500}>
+    <Spin spinning={isConnecting} delay={500}>
       <Form layout="horizontal" form={form} onFinish={authLoginSubmit}>
         <InputEmail />
         <InputPassword />

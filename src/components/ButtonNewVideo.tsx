@@ -4,10 +4,10 @@ import { HOME } from "../config/config";
 import { useHandleMenuClicks } from "../hooks/useHandleMenuClicks";
 
 export const ButtonNewVideo = () => {
-  const { setCurrent, navigate } = useHandleMenuClicks();
+  const { setCurrentMenuOption, navigate } = useHandleMenuClicks();
   const createVideo = () => {
     navigate(`${HOME}/create`);
-    setCurrent("create");
+    setCurrentMenuOption("create");
   };
   return (
     <FloatButton

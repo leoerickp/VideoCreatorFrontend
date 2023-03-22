@@ -2,7 +2,7 @@
 export type AppContent = {
     api: any;
     contextHolder: any;
-    current: any;
+    currentMenuOption: any;
     errorNotification: any;
-    setCurrent: any;
+    setCurrentMenuOption: any;
 };

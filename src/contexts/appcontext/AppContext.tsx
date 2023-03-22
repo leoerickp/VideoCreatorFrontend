@@ -4,8 +4,8 @@ import { AppContent } from "../../types/app-content";
 export const AppContext: React.Context<AppContent> = createContext<AppContent>({
   api: null,
   contextHolder: null,
-  current: undefined,
-  setCurrent: undefined,
+  currentMenuOption: undefined,
+  setCurrentMenuOption: undefined,
   errorNotification: undefined,
 });
 

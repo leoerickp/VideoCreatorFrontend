@@ -3,13 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../contexts/appcontext/AppContext";
 
 export const useHandleMenuClicks = () => {
-    const { current, setCurrent } = useAppContext()
+    const { currentMenuOption, setCurrentMenuOption } = useAppContext()
     const navigate = useNavigate();
 
     const onClick: MenuProps["onClick"] = (e: any) => {
         if (e.key !== "leoerickp") {
             navigate(e.key);
-            setCurrent(e.key);
+            setCurrentMenuOption(e.key);
         }
         if (e.key === "logout") {
             navigate(`/${e.key}`);
@@ -17,9 +17,9 @@ export const useHandleMenuClicks = () => {
     };
 
     return {
-        current,
+        currentMenuOption,
         onClick,
         navigate,
-        setCurrent,
+        setCurrentMenuOption,
     }
 }
